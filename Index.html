@@ -1,121 +1,820 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#080d18">
-<title>Masuk Sekarang Telat Ga? — Global Stock Research</title>
-<style>
-:root{color-scheme:dark;--bg:#080d18;--panel:#111b2c;--line:#26344b;--text:#f4f7fc;--muted:#aab8cc;--blue:#398bff;--green:#65e0b0}
-*{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at 80% 0%,#18345a 0,transparent 42%),var(--bg);color:var(--text);font:16px/1.65 Inter,system-ui,-apple-system,sans-serif}
-.wrap{width:min(1050px,calc(100% - 32px));margin:auto}
-header{padding:22px 0;border-bottom:1px solid var(--line)}
-.brand{font-weight:900;letter-spacing:.06em}.brand small{display:block;color:#75b5ff;letter-spacing:.18em}
-.hero{padding:76px 0 55px}
-.tag{display:inline-block;padding:6px 12px;border:1px solid #315580;border-radius:30px;color:#b9d9ff;font-size:13px}
-h1{font-size:clamp(38px,7vw,70px);line-height:1.08;letter-spacing:-.05em;margin:22px 0}
-h1 span{color:#78b8ff}
-p{color:var(--muted)}
-.lead{max-width:680px;font-size:18px}
-section{padding:35px 0}
-h2{font-size:clamp(27px,4vw,38px);letter-spacing:-.03em;margin:0 0 8px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{padding:24px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#142139,#0d1422)}
-.card h3{margin:0 0 8px}.card p{margin:0}
-.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:13px 19px;border-radius:11px;text-decoration:none;font-weight:800;border:1px solid var(--line);cursor:pointer;font:inherit;font-weight:800}
-.primary{background:linear-gradient(135deg,#398bff,#1760dc);color:white;border-color:transparent}
-.secondary{background:#121d30;color:var(--text)}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
-.membership{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.price{font-size:48px;font-weight:900;letter-spacing:-.05em;margin:4px 0}
-.label{color:#8fc4ff;text-transform:uppercase;font-size:13px;font-weight:800;letter-spacing:.12em}
-ul{padding-left:20px;color:var(--muted)}li{margin:8px 0}
-.bank{font-size:23px;font-weight:850;margin:6px 0}
-.account{font-size:clamp(25px,4vw,34px);font-weight:900;overflow-wrap:anywhere;letter-spacing:.03em;margin:18px 0 0}
-.owner{margin-top:0}
-.notice{border:1px solid #315348;background:#10241f;color:#c7e8dd;border-radius:12px;padding:15px;font-size:14px}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.step{padding:20px;border:1px solid var(--line);border-radius:15px;background:#0f1828}
-.num{color:#78b8ff;font-size:13px;font-weight:900;letter-spacing:.12em}
-.cta{padding:30px;text-align:center;border:1px solid #315580;border-radius:20px;background:linear-gradient(135deg,#152d4c,#101827)}
-.cta p{max-width:650px;margin:10px auto}
-footer{border-top:1px solid var(--line);margin-top:40px;padding:25px 0;color:#8190a6;font-size:13px}
-@media(max-width:720px){.grid,.membership,.steps{grid-template-columns:1fr}.hero{padding-top:52px}.price{font-size:42px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d18">
+
+  <title>Masuk Sekarang Telat Ga? | Global Stock Research</title>
+  <meta name="description" content="Riset saham Amerika Serikat, early momentum, potensi breakout, katalis pasar, dan analisis teknikal.">
+
+  <style>
+    :root {
+      --bg: #080d18;
+      --panel: #0e1626;
+      --border: #243149;
+      --text: #f5f7ff;
+      --muted: #a5b1c5;
+      --green: #4ade80;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(8, 13, 24, .95);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 15px;
+      text-decoration: none;
+    }
+
+    .brand span,
+    .accent {
+      color: var(--green);
+    }
+
+    .nav-link {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .hero {
+      padding: 95px 0 80px;
+      background:
+        radial-gradient(ellipse at 80% 0%, rgba(74, 222, 128, .12), transparent 48%),
+        var(--bg);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--green);
+      background: rgba(74, 222, 128, .08);
+      border: 1px solid rgba(74, 222, 128, .3);
+      border-radius: 40px;
+      padding: 7px 13px;
+      margin-bottom: 24px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 {
+      max-width: 850px;
+      font-size: clamp(38px, 7vw, 68px);
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 25px;
+    }
+
+    .hero p {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 17px;
+      margin-bottom: 25px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 20px;
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .btn-primary {
+      color: #04110a;
+      background: var(--green);
+      border: 1px solid var(--green);
+    }
+
+    .btn-primary:hover {
+      background: #86efac;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: var(--panel);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--green);
+    }
+
+    .section {
+      padding: 75px 0;
+      border-top: 1px solid rgba(36, 49, 73, .65);
+    }
+
+    .section-heading {
+      max-width: 780px;
+      margin-bottom: 35px;
+    }
+
+    .section-kicker {
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(29px, 5vw, 43px);
+      line-height: 1.2;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .feature-card,
+    .payment-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 24px;
+    }
+
+    .feature-number {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .feature-card h3,
+    .payment-card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p,
+    .payment-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* CHART GALLERY */
+
+    .chart-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .chart-card {
+      overflow: hidden;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      transition: .2s;
+    }
+
+    .chart-card:hover {
+      border-color: var(--green);
+      transform: translateY(-3px);
+    }
+
+    .chart-card a {
+      display: block;
+    }
+
+    .chart-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      background: #05080e;
+    }
+
+    .chart-content {
+      padding: 20px;
+    }
+
+    .chart-content h3 {
+      font-size: 17px;
+      margin-bottom: 9px;
+    }
+
+    .chart-content p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .chart-hint {
+      color: #8493aa;
+      font-size: 12px;
+      margin-top: 20px;
+    }
+
+    /* MEMBERSHIP */
+
+    .membership-wrap {
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .membership-card {
+      padding: 32px;
+      border: 1px solid rgba(74, 222, 128, .4);
+      border-radius: 18px;
+      background:
+        radial-gradient(ellipse at top right, rgba(74, 222, 128, .1), transparent 55%),
+        var(--panel);
+    }
+
+    .membership-tag {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .membership-card h3 {
+      font-size: 27px;
+      margin: 12px 0;
+    }
+
+    .price {
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin: 15px 0 5px;
+    }
+
+    .price small {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .membership-description {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .check-list {
+      list-style: none;
+      margin: 22px 0;
+    }
+
+    .check-list li {
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(36, 49, 73, .7);
+      font-size: 14px;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      color: var(--green);
+      font-weight: 900;
+      margin-right: 10px;
+    }
+
+    /* PAYMENT */
+
+    .payment-card p {
+      margin-bottom: 14px;
+    }
+
+    .bank-name {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 18px;
+    }
+
+    .account-number {
+      font-size: clamp(24px, 5vw, 32px);
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin: 5px 0;
+      overflow-wrap: anywhere;
+    }
+
+    .account-owner {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .disclaimer {
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(148, 163, 184, .04);
+      color: #94a3b8;
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      color: #8493aa;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .footer strong {
+      color: var(--text);
+    }
+
+    @media (max-width: 760px) {
+      .grid-3,
+      .chart-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 65px 0 55px;
+      }
+
+      .hero h1 {
+        letter-spacing: -1px;
+      }
+
+      .section {
+        padding: 55px 0;
+      }
+
+      .membership-card {
+        padding: 24px;
+      }
+
+      .nav-inner {
+        min-height: 62px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<header><div class="wrap brand">MASUK SEKARANG TELAT GA?<small>GLOBAL STOCK RESEARCH</small></div></header>
-<main>
-<div class="wrap hero">
-<div class="tag">GLOBAL STOCK RESEARCH • VIP</div>
-<h1>Riset lebih terstruktur.<br><span>Keputusan lebih terukur.</span></h1>
-<p class="lead">Ikuti berita, katalis pasar, watchlist, dan diskusi saham global dalam satu komunitas. Gunakan informasi sebagai bahan riset mandiri, bukan jaminan hasil investasi.</p>
-<div class="actions"><a class="btn primary" href="#membership">Lihat Membership →</a><a class="btn secondary" href="#cara">Cara Bergabung</a></div>
-</div>
 
-<section class="wrap">
-<h2>Apa yang kamu dapatkan?</h2>
-<p>Ruang untuk belajar, mengamati pasar, dan menyusun proses riset sendiri.</p>
-<div class="grid">
-<div class="card"><h3>◎ Berita & Katalis</h3><p>Ikuti perkembangan berita dan katalis yang berpotensi memengaruhi saham serta sektor terkait.</p></div>
-<div class="card"><h3>↗ Watchlist & Ide Riset</h3><p>Bahan pantauan untuk membantu meneliti peluang, tren, dan risiko sebelum mengambil keputusan.</p></div>
-<div class="card"><h3>◈ Komunitas Diskusi</h3><p>Ruang Telegram VIP untuk berdiskusi, bertukar perspektif, dan belajar bersama.</p></div>
-</div>
-</section>
+  <!-- NAVIGATION -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand">
+        MASUK SEKARANG <span>TELAT GA?</span>
+      </a>
+      <a href="#membership" class="nav-link">Membership VIP ↗</a>
+    </div>
+  </header>
 
-<section class="wrap" id="membership">
-<h2>Membership VIP</h2><p>Akses selama 30 hari setelah pembayaran diverifikasi.</p>
-<div class="membership">
-<div class="card">
-<div class="label">Akses 30 hari</div>
-<div class="price">Rp100.000</div>
-<p>per 30 hari • verifikasi manual</p>
-<ul><li>Akses komunitas Telegram VIP</li><li>Update berita dan katalis pasar</li><li>Watchlist serta bahan riset</li><li>Perpanjangan secara manual</li></ul>
-</div>
-<div class="card">
-<div class="label">Pembayaran transfer</div>
-<div class="bank">BNI</div>
-<div class="account" id="rekening">2081691431</div>
-<p class="owner">Nama pemilik: <strong style="color:white">Ketut Gede Ariyasa</strong></p>
-<button class="btn secondary" id="salin" type="button">Salin Nomor Rekening</button>
-<p id="status" aria-live="polite"></p>
-<div class="notice">Transfer tepat <strong>Rp100.000</strong>. Simpan bukti transfer untuk diunggah pada formulir konfirmasi.</div>
-</div>
-</div>
-</section>
+  <main>
 
-<section class="wrap" id="cara">
-<h2>Cara Bergabung</h2><p>Setelah transfer, ikuti tiga langkah ini.</p>
-<div class="steps">
-<div class="step"><div class="num">LANGKAH 01</div><h3>Transfer pembayaran</h3><p>Transfer Rp100.000 ke rekening BNI yang tertera di halaman ini.</p></div>
-<div class="step"><div class="num">LANGKAH 02</div><h3>Kirim konfirmasi</h3><p>Isi nama, username Telegram, dan unggah bukti transfer melalui Google Form.</p></div>
-<div class="step"><div class="num">LANGKAH 03</div><h3>Tunggu verifikasi</h3><p>Admin memeriksa pembayaran dan mengirim undangan Telegram jika sesuai.</p></div>
-</div>
-</section>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="eyebrow">GLOBAL STOCK RESEARCH</div>
 
-<section class="wrap">
-<div class="cta">
-<h2>Sudah melakukan transfer?</h2>
-<p>Kirim data konfirmasi dan bukti transfer. Pastikan username Telegram kamu benar. Pembayaran dan akses grup diperiksa secara manual oleh admin.</p>
-<a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSc34_-_GN0s6ZLuU7jctjDpKbCQHUqCEjjD8VBoUgibbvIR0Q/viewform?usp=header" target="_blank" rel="noopener noreferrer">Konfirmasi Pembayaran ↗</a>
-</div>
-</section>
+        <h1>
+          Cari Peluang Saham AS
+          <span class="accent">Sebelum Breakout.</span>
+        </h1>
 
-<section class="wrap">
-<div class="notice"><strong>Disclaimer risiko:</strong> Konten ini hanya untuk informasi dan edukasi, bukan ajakan atau rekomendasi pasti untuk membeli atau menjual efek. Investasi memiliki risiko kerugian, termasuk kehilangan sebagian atau seluruh modal. Tidak ada jaminan keuntungan. Lakukan riset mandiri dan sesuaikan keputusan dengan profil risiko masing-masing.</div>
-</section>
-</main>
-<footer><div class="wrap">MASUK SEKARANG TELAT GA? — GLOBAL STOCK RESEARCH<br>© <span id="tahun"></span> • Untuk tujuan edukasi.</div></footer>
-<script>
-document.getElementById("tahun").textContent=new Date().getFullYear();
-document.getElementById("salin").addEventListener("click",async function(){
-const rekening=document.getElementById("rekening").textContent.trim();
-const status=document.getElementById("status");
-try{await navigator.clipboard.writeText(rekening);status.textContent="Nomor rekening berhasil disalin."}
-catch(e){status.textContent="Silakan salin nomor ini secara manual: "+rekening}
-});
-</script>
+        <p>
+          Riset saham Amerika Serikat dengan fokus pada early momentum,
+          perubahan struktur harga, aktivitas volume, dan katalis pasar.
+          Bukan sekadar mengejar saham yang sudah terbang, melainkan
+          mempelajari peluang sejak fase awal sebelum mengambil keputusan.
+        </p>
+
+        <div class="button-row">
+          <a href="#membership" class="btn btn-primary">
+            Lihat Membership VIP
+          </a>
+          <a href="#riset" class="btn btn-secondary">
+            Lihat Contoh Analisis
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOKUS RISET -->
+    <section class="section" id="fokus">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">OUR RESEARCH APPROACH</div>
+          <h2>Fokus Kami Bukan Mengejar Saham yang Sudah Terbang</h2>
+          <p>
+            Kami berfokus pada saham Amerika Serikat yang mulai menunjukkan
+            tanda perubahan momentum sebelum potensi breakout. Pendekatan
+            ini mengutamakan pengamatan fase awal, konfirmasi harga, dan
+            evaluasi risiko. Tidak ada indikator atau metode yang dapat
+            memastikan suatu saham akan naik.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="feature-card">
+            <div class="feature-number">01 / EARLY MOMENTUM</div>
+            <h3>Mencari Fase Awal</h3>
+            <p>
+              Mengamati konsolidasi, higher low, perubahan tren, dan
+              struktur harga yang mulai menguat sebelum kemungkinan
+              penembusan resistance.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-number">02 / VOLUME & CATALYST</div>
+            <h3>Membaca Aktivitas Pasar</h3>
+            <p>
+              Memantau volume perdagangan, resistance, berita perusahaan,
+              laporan keuangan, dan katalis yang relevan untuk bahan riset.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-number">03 / RISK MANAGEMENT</div>
+            <h3>Memetakan Risiko</h3>
+            <p>
+              Memperhatikan level konfirmasi, support, area invalidasi,
+              dan skenario alternatif. Fokus bukan hanya pada potensi
+              keuntungan, tetapi juga risiko kerugian.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERI CHART -->
+    <section class="section" id="riset">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">CHART & TECHNICAL RESEARCH</div>
+          <h2>Intip Analisis Chart Kami</h2>
+          <p>
+            Berikut contoh visual chart yang digunakan untuk mempelajari
+            struktur harga, momentum, volume, dan area teknikal penting
+            pada saham Amerika Serikat. Tujuannya adalah menyusun skenario
+            berdasarkan data, bukan menebak kenaikan secara sembarangan.
+          </p>
+        </div>
+
+        <div class="chart-gallery">
+
+          <article class="chart-card">
+            <a
+              href="https://raw.githubusercontent.com/tutde73-cloud/masuk-sekarang-vip/main/IMG_0866.jpeg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://raw.githubusercontent.com/tutde73-cloud/masuk-sekarang-vip/main/IMG_0866.jpeg"
+                alt="Contoh chart analisis saham AS pertama"
+                loading="lazy"
+              >
+            </a>
+
+            <div class="chart-content">
+              <h3>Price Action & Struktur</h3>
+              <p>
+                Mempelajari konsolidasi, support, resistance, dan
+                struktur tren untuk menilai perkembangan suatu setup.
+              </p>
+            </div>
+          </article>
+
+          <article class="chart-card">
+            <a
+              href="https://raw.githubusercontent.com/tutde73-cloud/masuk-sekarang-vip/main/IMG_0867.jpeg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://raw.githubusercontent.com/tutde73-cloud/masuk-sekarang-vip/main/IMG_0867.jpeg"
+                alt="Contoh chart analisis saham AS kedua"
+                loading="lazy"
+              >
+            </a>
+
+            <div class="chart-content">
+              <h3>Momentum & Volume</h3>
+              <p>
+                Mengamati perubahan momentum dan aktivitas volume untuk
+                mencari konfirmasi penguatan harga.
+              </p>
+            </div>
+          </article>
+
+          <article class="chart-card">
+            <a
+              href="https://raw.githubusercontent.com/tutde73-cloud/masuk-sekarang-vip/main/IMG_0868.jpeg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://raw.githubusercontent.com/tutde73-cloud/masuk-sekarang-vip/main/IMG_0868.jpeg"
+                alt="Contoh chart analisis saham AS ketiga"
+                loading="lazy"
+              >
+            </a>
+
+            <div class="chart-content">
+              <h3>Breakout & Skenario Harga</h3>
+              <p>
+                Memetakan area resistance, level konfirmasi, dan
+                invalidasi analisis untuk mengevaluasi peluang serta risiko.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="chart-hint">
+          Klik gambar untuk melihatnya dalam ukuran lebih besar.
+          Contoh chart bukan jaminan hasil transaksi di masa depan.
+        </p>
+      </div>
+    </section>
+
+    <!-- MANFAAT MEMBERSHIP -->
+    <section class="section" id="layanan">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">INSIDE THE COMMUNITY</div>
+          <h2>Apa yang Bisa Kamu Dapatkan?</h2>
+          <p>
+            Ruang untuk mengikuti riset dan mendiskusikan peluang saham
+            secara lebih terstruktur, dengan tetap melakukan evaluasi
+            mandiri sebelum bertransaksi.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="feature-card">
+            <div class="feature-number">01</div>
+            <h3>Berita & Katalis</h3>
+            <p>
+              Mengikuti perkembangan perusahaan, berita, dan katalis
+              pasar yang relevan sebagai bahan riset saham AS.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-number">02</div>
+            <h3>Watchlist & Ide Riset</h3>
+            <p>
+              Mengamati saham yang menarik berdasarkan struktur harga,
+              momentum, volume, dan perkembangan katalis.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-number">03</div>
+            <h3>Komunitas Diskusi</h3>
+            <p>
+              Berdiskusi dan bertukar sudut pandang mengenai chart,
+              perkembangan pasar, dan manajemen risiko.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMBERSHIP -->
+    <section class="section" id="membership">
+      <div class="container">
+        <div class="membership-wrap">
+          <div class="section-heading">
+            <div class="section-kicker">VIP MEMBERSHIP</div>
+            <h2>Gabung ke Komunitas Riset Kami</h2>
+            <p>
+              Akses komunitas privat untuk mengikuti materi riset dan
+              berdiskusi mengenai peluang saham.
+            </p>
+          </div>
+
+          <div class="membership-card">
+            <div class="membership-tag">GLOBAL STOCK RESEARCH</div>
+            <h3>VIP Member</h3>
+
+            <div class="price">
+              Rp100.000 <small>/ 30 hari</small>
+            </div>
+
+            <p class="membership-description">
+              Pembayaran dilakukan secara manual dan diverifikasi
+              sebelum akses grup diberikan.
+            </p>
+
+            <ul class="check-list">
+              <li>Informasi dan riset saham AS</li>
+              <li>Watchlist dan ide analisis</li>
+              <li>Pembahasan momentum dan potensi breakout</li>
+              <li>Diskusi bersama komunitas privat</li>
+              <li>Akses selama 30 hari sesuai paket</li>
+            </ul>
+
+            <a href="#pembayaran" class="btn btn-primary">
+              Daftar Membership VIP
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PEMBAYARAN -->
+    <section class="section" id="pembayaran">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">REGISTRATION</div>
+          <h2>Cara Bergabung</h2>
+          <p>
+            Ikuti langkah berikut untuk melakukan pendaftaran dan
+            mengonfirmasi pembayaran.
+          </p>
+        </div>
+
+        <div class="grid-3">
+
+          <article class="payment-card">
+            <h3>01. Transfer Pembayaran</h3>
+            <p>
+              Biaya membership Rp100.000 untuk 30 hari.
+              Transfer ke rekening BNI berikut.
+            </p>
+
+            <div class="bank-name">BANK BNI</div>
+            <div class="account-number" id="bankAccount">
+              2081691431
+            </div>
+            <div class="account-owner">
+              Atas nama: Ketut Gede Ariyasa
+            </div>
+
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="copyAccount()"
+            >
+              Salin Nomor Rekening
+            </button>
+          </article>
+
+          <article class="payment-card">
+            <h3>02. Konfirmasi Pembayaran</h3>
+            <p>
+              Setelah transfer, isi formulir dengan nama lengkap,
+              username Telegram, dan bukti pembayaran.
+            </p>
+
+            <a
+              class="btn btn-primary"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSc34_-_GN0s6ZLuU7jctjDpKbHUqCEjjD8VBoUgibbvIR0Q/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Isi Formulir Konfirmasi
+            </a>
+          </article>
+
+          <article class="payment-card">
+            <h3>03. Tunggu Verifikasi</h3>
+            <p>
+              Pembayaran akan diperiksa secara manual. Setelah
+              terverifikasi, kamu akan menerima informasi untuk
+              bergabung ke grup Telegram privat.
+            </p>
+            <p>
+              Pastikan username Telegram yang kamu masukkan benar.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- DISCLAIMER -->
+    <section class="section" id="disclaimer">
+      <div class="container">
+        <div class="disclaimer">
+          <strong style="color:#f5f7ff;">
+            Pernyataan Risiko dan Disclaimer
+          </strong>
+          <br><br>
+          Seluruh materi, analisis chart, watchlist, berita, dan diskusi
+          disediakan untuk tujuan informasi dan edukasi. Materi ini bukan
+          jaminan keuntungan dan tidak menjamin bahwa saham tertentu akan
+          mengalami breakout.
+          <br><br>
+          Investasi saham memiliki risiko kehilangan sebagian atau seluruh
+          modal. Pergerakan harga dapat dipengaruhi kondisi pasar, berita,
+          likuiditas, dan faktor lain yang tidak dapat dipastikan. Lakukan
+          riset mandiri dan pertimbangkan toleransi risiko sebelum mengambil
+          keputusan investasi. Kinerja masa lalu tidak menjamin hasil
+          di masa depan.
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <strong>Masuk Sekarang Telat Ga?</strong>
+      <br>
+      Global Stock Research
+      <br><br>
+      Riset lebih terstruktur. Keputusan lebih terukur.
+      <br>
+      © 2026 Masuk Sekarang Telat Ga? All rights reserved.
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    function copyAccount() {
+      const accountNumber = "2081691431";
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(accountNumber)
+          .then(function () {
+            alert("Nomor rekening BNI berhasil disalin.");
+          })
+          .catch(function () {
+            window.prompt(
+              "Silakan salin nomor rekening BNI:",
+              accountNumber
+            );
+          });
+      } else {
+        window.prompt(
+          "Silakan salin nomor rekening BNI:",
+          accountNumber
+        );
+      }
+    }
+  </script>
+
 </body>
 </html>
